@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import itertools
 from typing import Generator, Sequence
 
 def is_palindrome(seq: Sequence) -> bool:
@@ -22,9 +23,15 @@ def is_palindrome(seq: Sequence) -> bool:
     return all(seq[i] == seq[-i-1] for i in range(len(seq) // 2)) 
 
 def products_in_range(range_: range) -> Generator[int, None, None]:
-    for i in range_:
-        for j in range(i, range_.stop):
-            yield i * j
+    """
+    Yields i*j for every combination of i and j (with replacement) in range_.
+
+    Example:
+    >>> list(products_in_range(range(1, 6)))
+    [1, 2, 3, 4, 5, 4, 6, 8, 10, 9, 12, 15, 16, 20, 25]
+    """
+    for i, j in itertools.combinations_with_replacement(range_, 2):
+        yield i * j
 
 def solution(range_: range):
     """
