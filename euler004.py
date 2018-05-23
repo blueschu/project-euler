@@ -3,7 +3,19 @@
 from typing import Generator, Sequence
 
 def is_palindrome(seq: Sequence) -> bool:
-    """ Returns True is the specified string is a palindrome """
+    """ 
+    Returns True is the specified string is a palindrome.
+    
+    Examples:
+    >>> is_palindrome('12344321')
+    True
+    >>> is_palindrome('12321')
+    True
+    >>> is_palindrome('1111111111')
+    True
+    >>> is_palindrome('abcd')
+    False
+    """
     # Manually indexing in a loop or comprehension is generally a red
     # flag. However, in this case, I believe that indexing is simplerly 
     # than zipping and reversing slices.
@@ -15,12 +27,12 @@ def products_in_range(range_: range) -> Generator[int, None, None]:
             yield i * j
 
 def solution(range_: range):
+    """
+    >>> solution(range(10, 100))
+    9009
+    """
     return max(i for i in products_in_range(range_) if is_palindrome(str(i)))
 
 if __name__ == '__main__':
-    assert is_palindrome('12345677654321')
-    assert is_palindrome('1234567654321')
-    assert solution(range(10, 100)) == 9009
-
     print(solution(range(100, 1000)))
 

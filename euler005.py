@@ -4,14 +4,14 @@ import itertools
 
 def first_divisible_by_all_below(top_inclusive: int) -> int:
     """
-    A Brute force appoach.
-
     Returns the first number that is divisible by all numbers in [1, top_inclusive].
+
+    A Brute Force approach.
 
     Examples:
     >>> first_divisible_by_all_below(4)
     12
-    >>> first_divisible_by_all_below(10)
+    >>> first_divisible_by_all_below(10) # Problem example
     2520
     """
     for i in itertools.count(top_inclusive * (top_inclusive-1)):
@@ -19,5 +19,4 @@ def first_divisible_by_all_below(top_inclusive: int) -> int:
             return i
             
 if __name__ == '__main__':
-    assert first_divisible_by_all_below(10) == 2520, "Problem exmaple failed"
     print(first_divisible_by_all_below(20)) # produces 232792560

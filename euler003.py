@@ -2,10 +2,23 @@
 
 from typing import List
 
+# The number to be factored from the problem's description.
 INPUT = 600851475143
 
 def factorize(num: int) -> List[int]:
-    """ Returns a list of the prime factors of num """
+    """ 
+    Returns a list of the prime factors of num.
+    
+    Examples:
+    >>> factorize(5)
+    [5]
+    >>> factorize(12)
+    [2, 2, 3]
+    >>> factorize(36)
+    [2, 2, 3, 3]
+    >>> factorize(13 * 17)
+    [13, 17]
+    """
     factors = []
 
     i = 2
@@ -20,8 +33,4 @@ def factorize(num: int) -> List[int]:
     return factors
 
 if __name__ == '__main__':
-    assert factorize(5) == [5]
-    assert factorize(12) == [2, 2, 3]
-    assert factorize(36) == [2, 2, 3, 3]
-    assert factorize(13*17) == [13, 17]
     print(max(factorize(INPUT)))
