@@ -11,17 +11,9 @@ def is_prime(num: int) -> bool:
     A simple, brute-force approach.
 
     Examples:
-    >>> is_prime(2)
+    >>> all(is_prime(i) for i in (2, 3, 5, 7, 11, 13, 163))
     True
-    >>> is_prime(7)
-    True
-    >>> is_prime(9)
-    False
-    >>> is_prime(163)
-    True
-    >>> is_prime(1)
-    False
-    >>> is_prime(0)
+    >>> any(is_prime(i) for i in (0, 1, 9, 10))
     False
     """
     if num == 1:
