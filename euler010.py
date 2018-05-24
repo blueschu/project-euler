@@ -6,7 +6,7 @@ https://projecteuler.net/problem=10
 
 import itertools
 
-from euler007 import primes
+from common import primes
 
 def sum_of_primes_below(n: int) -> int:
     """
