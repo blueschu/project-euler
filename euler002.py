@@ -7,9 +7,10 @@ https://projecteuler.net/problem=2
 import itertools
 from typing import Generator
 
+
 def fib(zero=False) -> Generator[int, None, None]:
     """
-    Yields the elements of the fibonacci sequence, optionally begining with zero.
+    Yields the elements of the fibonacci sequence, optionally beginning with zero.
 
     Examples:
     >>> from itertools import islice
@@ -26,6 +27,7 @@ def fib(zero=False) -> Generator[int, None, None]:
         yield a
         a, b = b, b + a
 
+
 def solution(cap: int) -> int:
     """ 
     Returns the sum of all even fibonacci numbers not exceeding cap.
@@ -36,6 +38,6 @@ def solution(cap: int) -> int:
     """
     return sum(i for i in itertools.takewhile(lambda x: x < cap, fib()) if i % 2 == 0)
 
+
 if __name__ == '__main__':
     print(solution(4000000))
-

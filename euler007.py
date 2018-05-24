@@ -19,8 +19,8 @@ def nth_prime(n: int) -> int:
     >>> nth_prime(6)
     13
     """
-    return next(itertools.islice(primes(),  n - 1, None))
+    return next(itertools.islice(primes(), n - 1, None))
+
 
 if __name__ == '__main__':
     print(nth_prime(10001))
-

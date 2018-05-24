@@ -24,13 +24,13 @@ def is_prime(num: int) -> bool:
     if num == 2:
         return True
 
-    top = math.ceil(math.sqrt(num)) + 1
+    top = int(math.ceil(math.sqrt(num))) + 1
     return num % 2 != 0 and all(num % i != 0 for i in range(3, top, 2))
 
 
 def primes() -> Generator[int, None, None]:
     """
-    Yields every prime interger.
+    Yields every prime integer.
 
 
     Example:

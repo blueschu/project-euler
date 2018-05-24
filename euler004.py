@@ -7,10 +7,11 @@ https://projecteuler.net/problem=4
 import itertools
 from typing import Generator, Sequence
 
+
 def is_palindrome(seq: Sequence) -> bool:
-    """ 
+    """
     Returns True is the specified string is a palindrome.
-    
+
     Examples:
     >>> is_palindrome('12344321')
     True
@@ -22,9 +23,10 @@ def is_palindrome(seq: Sequence) -> bool:
     False
     """
     # Manually indexing in a loop or comprehension is generally a red
-    # flag. However, in this case, I believe that indexing is simplerly 
+    # flag. However, in this case, I believe that indexing is simpler
     # than zipping and reversing slices.
-    return all(seq[i] == seq[-i-1] for i in range(len(seq) // 2)) 
+    return all(seq[i] == seq[-i - 1] for i in range(len(seq) // 2))
+
 
 def products_in_range(range_: range) -> Generator[int, None, None]:
     """
@@ -37,6 +39,7 @@ def products_in_range(range_: range) -> Generator[int, None, None]:
     for i, j in itertools.combinations_with_replacement(range_, 2):
         yield i * j
 
+
 def solution(range_: range):
     """
     >>> solution(range(10, 100))
@@ -44,6 +47,6 @@ def solution(range_: range):
     """
     return max(i for i in products_in_range(range_) if is_palindrome(str(i)))
 
+
 if __name__ == '__main__':
     print(solution(range(100, 1000)))
-
