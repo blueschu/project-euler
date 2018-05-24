@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+"""
+A solution to Project Euler Problem 5.
+
+https://projecteuler.net/problem=5
+"""
 
 import itertools
 

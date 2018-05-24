@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+"""
+A solution to Project Euler Problem 10.
+
+https://projecteuler.net/problem=10
+"""
 
 import itertools
 
@@ -6,7 +10,7 @@ from euler007 import primes
 
 def sum_of_primes_below(n: int) -> int:
     """
-    Returns the sum of all of the prime integers that are less than n
+    Returns the sum of all of the prime integers that are less than n.
 
     Example:
     >>> sum_of_primes_below(10)

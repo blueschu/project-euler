@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+"""
+A solution to Project Euler Problem 6.
+
+https://projecteuler.net/problem=6
+"""
 
 def sum_of_squares_below(top: int) -> int:
     """ 

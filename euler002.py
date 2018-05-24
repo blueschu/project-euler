@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+"""
+A solution to Project Euler Problem 2.
+
+https://projecteuler.net/problem=2
+"""
 
 import itertools
 from typing import Generator

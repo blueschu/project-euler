@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+"""
+A solution to Project Euler Problem 7.
+
+https://projecteuler.net/problem=7
+"""
 
 import math
 import itertools
@@ -22,7 +26,7 @@ def is_prime(num: int) -> bool:
         return True
 
     top = math.ceil(math.sqrt(num)) + 1
-    return num % 2 != 0 and all(num % i != 0  for i in range(3, top, 2))
+    return num % 2 != 0 and all(num % i != 0 for i in range(3, top, 2))
 
 def primes() -> Generator[int, None, None]:
     """ 

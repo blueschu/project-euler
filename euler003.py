@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+"""
+A solution to Project Euler Problem 3.
+
+https://projecteuler.net/problem=3
+"""
 
 from typing import List
 

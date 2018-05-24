@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+"""
+A solution to Project Euler Problem 8.
+
+https://projecteuler.net/problem=8
+"""
 
 import functools
 import itertools
@@ -45,7 +49,7 @@ def window(seq, n=2):
 
 def digit_window_products(digits: str, n: int) -> Generator[int, None, None]:
     """
-    Returns the product of the digits in a slididing window of wideth n
+    Returns the product of the digits in a sliding window of width n
     over the string of digits.
 
     Example:
@@ -67,7 +71,7 @@ def digit_window_products(digits: str, n: int) -> Generator[int, None, None]:
 def solution(digits: str, n: int) -> int:
     """
     Returns the greatest product of n adjacent digits in the given
-    digits string
+    digits string.
     
     Example:
     >>> solution(INPUT, 4)
