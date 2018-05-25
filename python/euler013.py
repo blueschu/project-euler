@@ -4,6 +4,9 @@ A solution to Project Euler Problem 13.
 https://projecteuler.net/problem=13
 """
 
+from common import digit_sum
+
+
 # Number given in problem description.
 NUMBER = """
 37107287533902102798797998220837590246510135740250
@@ -109,22 +112,6 @@ NUMBER = """
 """.replace('\n', '')
 
 
-def digit_sum(digits: str) -> int:
-    """
-    Returns the sum of the digits in the specified string of digits.
-
-    Examples:
-        >>> digit_sum('12')
-        3
-        >>> digit_sum(str(456))
-        15
-        >>> digit_sum('123abc')
-        Traceback (most recent call last):
-        ...
-        ValueError: invalid literal for int() with base 10: 'a'
-    """
-    return sum(map(int, digits))
-
-
 if __name__ == '__main__':
     print(digit_sum(NUMBER))
+
