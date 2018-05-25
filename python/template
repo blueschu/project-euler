@@ -1,0 +1,8 @@
+"""
+A solution to Project Euler Problem {problem_number}.
+
+https://projecteuler.net/problem={problem_number}
+"""
+
+if __name__ == '__main__':
+    print("Not implemented")
