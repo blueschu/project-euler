@@ -13,7 +13,6 @@ def nth_prime(n: int) -> int:
     """
     Returns the nth prime integer.
 
-    Examples:
     >>> nth_prime(1)
     2
     >>> nth_prime(6)

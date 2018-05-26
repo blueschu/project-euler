@@ -12,7 +12,6 @@ def fib(zero=False) -> Generator[int, None, None]:
     """
     Yields the elements of the fibonacci sequence, optionally beginning with zero.
 
-    Examples:
     >>> from itertools import islice
     >>> next(fib(zero=True))
     0
@@ -29,10 +28,9 @@ def fib(zero=False) -> Generator[int, None, None]:
 
 
 def solution(cap: int) -> int:
-    """ 
+    """
     Returns the sum of all even fibonacci numbers not exceeding cap.
-    
-    Examples:
+
     >>> solution(10)
     10
     """

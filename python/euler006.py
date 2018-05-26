@@ -7,10 +7,9 @@ https://projecteuler.net/problem=6
 
 def sum_of_squares_below(top: int) -> int:
     """
-    Returns the sum of the squares of all positive intergers less than or
+    Returns the sum of the squares of all positive integers less than or
     equal to top.
 
-    Example:
     >>> sum_of_squares_below(10) # Problem example
     385
     """
@@ -22,7 +21,6 @@ def square_of_sum_below(top: int) -> int:
     Returns the square of the sum of all positive integers less than or
     equal to top.
 
-    Example:
     >>> square_of_sum_below(10) # Problem example
     3025
     """
@@ -35,7 +33,6 @@ def solution(num: int) -> int:
     num natural numbers and the sum of the squares of the first num
     natural numbers.
 
-    Example:
     >>> solution(10) # Problem example
     2640
     """

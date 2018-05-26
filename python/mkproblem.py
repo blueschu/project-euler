@@ -10,13 +10,12 @@ def euler_problem_number(arg: str) -> int:
 
     The arg must be a valid integer in the range [1, 999].
 
-    Examples:
-        >>> euler_problem_number('4')
-        4
-        >>> euler_problem_number('3009')
-        Traceback (most recent call last):
-            ...
-        argparse.ArgumentTypeError: 3009 is not a valid problem number.
+    >>> euler_problem_number('4')
+    4
+    >>> euler_problem_number('3009')
+    Traceback (most recent call last):
+        ...
+    argparse.ArgumentTypeError: 3009 is not a valid problem number.
     """
     num = int(arg)
     if num not in range(1, 1000):
@@ -26,8 +25,7 @@ def euler_problem_number(arg: str) -> int:
 
 def populate_euler_template_file(path: str, problem_number: int) -> str:
     """
-    Returns a string of the template file at the specified path
-    populated with the Euler problem_number.
+    Returns a string of the template file at the specified path populated with the Euler problem_number.
     """
     with open(path, 'r') as fin:
         output = fin.read().format(problem_number=problem_number)
@@ -44,7 +42,7 @@ if __name__ == '__main__':
         help='Template file to use during solution generation. Defaults to \'template\' if no argument is provided.')
     parser.add_argument('--file-format', default='euler#.py',
         help='The format for the solution file. '
-             'All instances of \'#\' will be repalced with the three-digit problem number')
+             'All instances of \'#\' will be replaced with the three-digit problem number')
 
     args = parser.parse_args()
     file_name = args.file_format.replace('#', '{0:03d}'.format(args.problem_number))

@@ -11,15 +11,14 @@ def collatz(start: int) -> Generator[int, None, None]:
     """
     Yields a collatz sequence beginning with with start.
 
-    Examples:
-        >>> list(collatz(2))
-        [2, 1]
-        >>> list(collatz(13))
-        [13, 40, 20, 10, 5, 16, 8, 4, 2, 1]
-        >>> list(collatz(0))
-        Traceback (most recent call last):
-        ...
-        ValueError: Collatz sequence is not defined for non-positive seeds
+    >>> list(collatz(2))
+    [2, 1]
+    >>> list(collatz(13))
+    [13, 40, 20, 10, 5, 16, 8, 4, 2, 1]
+    >>> list(collatz(0))
+    Traceback (most recent call last):
+    ...
+    ValueError: Collatz sequence is not defined for non-positive seeds
     """
     if start < 1:
         raise ValueError('Collatz sequence is not defined for non-positive seeds')
@@ -40,9 +39,8 @@ def longest_collatz(max_seed: int) -> List[int]:
     """
     Returns the longest collatz sequence whose seed is less than max_seed.
 
-    Examples:
-        >>> longest_collatz(12)
-        [9, 28, 14, 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1]
+    >>> longest_collatz(12)
+    [9, 28, 14, 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1]
     """
     return max((list(collatz(i)) for i in range(1, max_seed)), key=len)
 

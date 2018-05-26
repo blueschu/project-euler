@@ -13,7 +13,6 @@ def sum_of_primes_below(n: int) -> int:
     """
     Returns the sum of all of the prime integers that are less than n.
 
-    Example:
     >>> sum_of_primes_below(10)
     17
     """

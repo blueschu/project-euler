@@ -11,10 +11,9 @@ from common import digit_sum
 def factorial_digit_sum(num: int) -> int:
     """
     Returns the sum of the decimal digits in num!.
-    
-    Examples:
-        >>> factorial_digit_sum(10)
-        27
+
+    >>> factorial_digit_sum(10)
+    27
     """
     return digit_sum(str(math.factorial(num)))
 

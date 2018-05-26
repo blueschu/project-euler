@@ -14,7 +14,6 @@ def factorize(num: int) -> List[int]:
     """
     Returns a list of the prime factors of num.
 
-    Examples:
     >>> factorize(5)
     [5]
     >>> factorize(12)

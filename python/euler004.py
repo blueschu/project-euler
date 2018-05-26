@@ -12,7 +12,6 @@ def is_palindrome(seq: Sequence) -> bool:
     """
     Returns True is the specified string is a palindrome.
 
-    Examples:
     >>> is_palindrome('12344321')
     True
     >>> is_palindrome('12321')
@@ -23,8 +22,9 @@ def is_palindrome(seq: Sequence) -> bool:
     False
     """
     # Manually indexing in a loop or comprehension is generally a red
-    # flag. However, in this case, I believe that indexing is simpler
-    # than zipping and reversing slices.
+    # flag. However, in this case, I believe that indexing is simplest
+    # solution as zipping and reversing slices would quickly become
+    # convoluted.
     return all(seq[i] == seq[-i - 1] for i in range(len(seq) // 2))
 
 
@@ -32,7 +32,6 @@ def products_in_range(range_: range) -> Generator[int, None, None]:
     """
     Yields i*j for every combination of i and j (with replacement) in range_.
 
-    Example:
     >>> list(products_in_range(range(1, 6)))
     [1, 2, 3, 4, 5, 4, 6, 8, 10, 9, 12, 15, 16, 20, 25]
     """

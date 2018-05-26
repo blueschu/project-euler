@@ -37,8 +37,10 @@ INPUT = """
 # From itertools examples
 # https://docs.python.org/2.3/lib/itertools-example.html
 def window(seq, n=2):
-    """Returns a sliding window (of width n) over data from the iterable
-       s -> (s0,s1,...s[n-1]), (s1,s2,...,sn), ...
+    """
+    Returns a sliding window (of width n) over data from the iterable.
+
+    s -> (s0,s1,...s[n-1]), (s1,s2,...,sn), ...
     """
     it = iter(seq)
     result = tuple(itertools.islice(it, n))
@@ -54,7 +56,6 @@ def digit_window_products(digits: str, n: int) -> Generator[int, None, None]:
     Returns the product of the digits in a sliding window of width n
     over the string of digits.
 
-    Example:
     >>> gen = digit_window_products('1234', 2)
     >>> next(gen)
     2
@@ -76,7 +77,6 @@ def solution(digits: str, n: int) -> int:
     Returns the greatest product of n adjacent digits in the given
     digits string.
 
-    Example:
     >>> solution(INPUT, 4)
     5832
     """

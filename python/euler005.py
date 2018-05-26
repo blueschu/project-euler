@@ -13,7 +13,6 @@ def first_divisible_by_all_below(top_inclusive: int) -> int:
 
     A Brute Force approach.
 
-    Examples:
     >>> first_divisible_by_all_below(4)
     12
     >>> first_divisible_by_all_below(10) # Problem example
