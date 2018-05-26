@@ -7,6 +7,8 @@ https://projecteuler.net/problem=12
 import itertools
 from typing import Generator, List, Tuple
 
+from common import factor_pairs
+
 
 def triangle_numbers() -> Generator[int, None, None]:
     """
@@ -20,33 +22,6 @@ def triangle_numbers() -> Generator[int, None, None]:
     for i in itertools.count(1):
         num += i
         yield num
-
-
-def factor_pairs(num: int) -> List[Tuple[int, int]]:
-    """
-    Returns a list of all of the factor pairs of num.
-
-    Examples:
-        >>> factor_pairs(1)
-        [(1, 1)]
-        >>> factor_pairs(2)
-        [(1, 2)]
-        >>> factor_pairs(4)
-        [(1, 4), (2, 2)]
-        >>> factor_pairs(12)
-        [(1, 12), (2, 6), (3, 4)]
-        >>> factor_pairs(64)
-        [(1, 64), (2, 32), (4, 16), (8, 8)]
-        >>> factor_pairs(0)
-        []
-    """
-    factors = []
-    for i in range(1, int(num ** 0.5) + 1):
-        div, mod = divmod(num, i)
-        if mod == 0:
-            factors.append((i, div))
-
-    return factors
 
 
 def solution(num_divisors: int) -> int:
