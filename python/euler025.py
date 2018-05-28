@@ -4,7 +4,6 @@ A solution to Project Euler Problem 24.
 https://projecteuler.net/problem=24
 """
 
-import itertools
 from typing import Any, Callable, Generator, Iterable
 
 from common import fibonacci
