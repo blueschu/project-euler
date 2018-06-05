@@ -1,7 +1,7 @@
 target = 1000
 
 divisibleByAny :: Integral a => [a] -> a -> Bool
-divisibleByAny ns num = or $ map (\x -> mod num x == 0) ns
+divisibleByAny ns num = any (\x -> num `mod` x == 0) ns
 
 multiplesOfAny :: Integral a => [a] -> [a]
 multiplesOfAny ns = [x | x <- [1..], divisibleByAny ns x]
