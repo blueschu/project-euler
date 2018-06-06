@@ -1,8 +1,7 @@
 target = 500
 
 triangleNumbers :: Integral a => [a]
-triangleNumbers = go 1 2
-    where go n i = n:(go (n + i) (succ i))
+triangleNumbers = scanl1 (+) [1..]
 
 factorPairs :: Integral a => a -> [(a,a)]
 factorPairs n = go n 1
