@@ -6,7 +6,7 @@ divisibleByAny ns num = any (\x -> num `mod` x == 0) ns
 multiplesOfAny :: Integral a => [a] -> [a]
 multiplesOfAny ns = [x | x <- [1..], divisibleByAny ns x]
 
-solution cap = sum $ takeWhile (\x -> x < cap) $ multiplesOfAny [3, 5]
+solution cap = sum $ takeWhile (<cap) $ multiplesOfAny [3, 5]
 
 main = print $ solution target
 
