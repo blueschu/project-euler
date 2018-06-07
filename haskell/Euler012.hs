@@ -1,3 +1,5 @@
+module Euler012 where
+
 target = 500
 
 triangleNumbers :: Integral a => [a]

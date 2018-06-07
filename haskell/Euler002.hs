@@ -1,3 +1,5 @@
+module Euler002 where
+
 target = 4000000
 
 fibonacci :: Integral a => [a]

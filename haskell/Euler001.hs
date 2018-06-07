@@ -1,3 +1,5 @@
+module Euler001 where
+
 target = 1000
 
 divisibleByAny :: Integral a => [a] -> a -> Bool

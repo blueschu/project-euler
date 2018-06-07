@@ -1,3 +1,5 @@
+module Euler003 where
+
 target = 600851475143
 
 primeFactors :: Integral a => a -> [a]

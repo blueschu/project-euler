@@ -1,3 +1,5 @@
+module Euler016 where
+
 target = 2 ^ 1000
 
 digitSum :: Integral a => a -> a

@@ -1,3 +1,5 @@
+module Euler014 where
+
 import Data.List (maximumBy)
 import Data.Ord (comparing)
 

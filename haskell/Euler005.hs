@@ -1,3 +1,5 @@
+module Euler005 where
+
 target = 20
 
 divisibleByAll :: Integral a => [a] -> a -> Bool

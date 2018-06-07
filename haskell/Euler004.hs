@@ -1,3 +1,5 @@
+module Euler004 where
+
 numericPalindrome :: Integral a => a -> a -> Bool
 numericPalindrome base n
     | n < 0 = numericPalindrome base (-n)
