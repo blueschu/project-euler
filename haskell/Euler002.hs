@@ -1,9 +1,8 @@
 module Euler002 where
 
-target = 4000000
+import Common (fibonacci)
 
-fibonacci :: Integral a => [a]
-fibonacci = map fst $ iterate (\(a,b) -> (b, b + a)) (0, 1)
+target = 4000000
 
 evenFibonacci :: Integral a => [a]
 evenFibonacci = filter even fibonacci
