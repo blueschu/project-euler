@@ -1,4 +1,11 @@
-module Common (factorial, digitSum, fibonacci, factorPairs, factorSet) where
+module Common
+( factorial
+, digitSum
+, fibonacci
+, factorPairs
+, factorSet
+, numericPalindrome
+) where
 
 import qualified Data.Set as Set
 
@@ -29,4 +36,17 @@ factorPairs n = go n 1
 factorSet :: Integral a => a -> Set.Set a
 factorSet = Set.fromList . flattenPairs . factorPairs
      where flattenPairs = foldr (\(a, b) acc -> a : b : acc) []
+
+numericPalindrome :: Integral a => a -> a -> Bool
+numericPalindrome base n
+    | n < 0 = numericPalindrome base (-n)
+    | otherwise = decayPalindrome base n greatestPowerOfBase
+    where greatestPowerOfBase = base ^ (floor . logBase (fromIntegral base) . fromIntegral) n
+          decayPalindrome base n top
+              | top == 0 = True
+              | otherwise = left == right && decayPalindrome base endsDecayed nextTop
+              where left = n `quot` top
+                    right = n `mod` base
+                    endsDecayed = (n - (left * top) - right) `quot` base
+                    nextTop = top `quot` (base ^ 2)
 
