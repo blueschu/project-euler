@@ -5,6 +5,8 @@ module Common
 , factorPairs
 , factorSet
 , numericPalindrome
+, digitListBase
+, takeLast
 ) where
 
 import qualified Data.Set as Set
@@ -50,3 +52,18 @@ numericPalindrome base n
                     endsDecayed = (n - (left * top) - right) `quot` base
                     nextTop = top `quot` (base ^ 2)
 
+digitListBase :: Integral a => a -> a -> [a]
+digitListBase _ 0 = [0]
+digitListBase base n
+    | n < 0 = error "Not defined for negative numbers"
+    | base < 2 = error "Not defined for bases less than 2"
+    | otherwise = reverse . go base $ n
+    where go _ 0 = []
+          go base n = (n `mod` base) : go base (n `quot` base)
+
+-- Based on formula given at https://www.joachim-breitner.de/blog/600-On_taking_the_last_n_elements_of_a_list
+takeLast :: Int -> [a] -> [a]
+takeLast n l = go (drop n l) l
+  where
+    go [] r = r
+    go (_:xs) (_:ys) = go xs ys
