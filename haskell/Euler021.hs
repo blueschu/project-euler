@@ -9,7 +9,7 @@ properDivisorSum n = (sum . factorSet $ n) - n
 
 amicable :: Integral a => a -> Bool
 amicable n = divisorSum /= n && properDivisorSum divisorSum  == n
-    where divisorSum = properDivisorSum n
+  where divisorSum = properDivisorSum n
 
 amicableSumBelow cap = sum . takeWhile (<cap) . filter amicable $ [1..]
 

@@ -14,8 +14,8 @@ takeWhileUnique = go Set.empty
     go :: (Ord a) => Set.Set a -> [a] -> [a]
     go _ [] = []
     go prior (x:xs)
-        | x `Set.member` prior = []
-        | otherwise = x:go (Set.insert x prior) xs
+      | x `Set.member` prior = []
+      | otherwise = x:go (Set.insert x prior) xs
 
 digitFactorialChain :: Integral a => a -> [a]
 digitFactorialChain = iterate digitFactorialSum
