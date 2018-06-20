@@ -8,6 +8,8 @@ module Common
 , digitListBase
 , takeLast
 , digitFactorialSum
+, nPr
+, nCr
 ) where
 
 import qualified Data.Set as Set
@@ -92,3 +94,12 @@ digitFactorialSum = sum . map digitFactorial . digitListBase 10
     digitFactorial 7 = 5040
     digitFactorial 8 = 40320
     digitFactorial 9 = 362880
+
+nPr :: Integral a => a -> a -> a
+n `nPr` r = (factorial n) `quot` (factorial (n - r))
+
+nCr :: Integral a => a -> a -> a
+n `nCr` r
+  | n == r = 1
+  | n < r  = 0
+  | otherwise = (n `nPr` r) `quot` (factorial r)
