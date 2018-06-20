@@ -1,7 +1,7 @@
 module Euler148 where
 
 import Common (nCr)
-import Data.List (genericLength, intercalate)
+import Data.List (genericLength)
 
 target = 10 ^ 9
 
