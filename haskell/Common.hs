@@ -31,16 +31,16 @@ fibonacci :: Integral a => [a]
 fibonacci = map fst $ iterate (\(a,b) -> (b, b + a)) (0, 1)
 
 factorPairs :: Integral a => a -> [(a,a)]
-factorPairs n = go n 1
+factorPairs n = go 1 n
   where
     top = 1 + (floor . sqrt . fromIntegral) n
-    go n s
+    go s rest
       | s >= top = []
-      | n `mod` s == 0 = (s, div):(go n next)
-      | otherwise = go n next
+      | m == 0 = (s, d):(go next rest)
+      | otherwise = go next rest
       where
-        div = n `quot` s
-        next = succ s
+        (d, m) = rest `divMod` s
+        next = s + 1
 
 factorSet :: Integral a => a -> Set.Set a
 factorSet = Set.fromList . flattenPairs . factorPairs where
