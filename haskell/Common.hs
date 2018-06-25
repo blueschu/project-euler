@@ -18,13 +18,15 @@ factorial :: Integral a => a -> a
 factorial n = product [2..n]
 
 digitSum :: Integral a => a -> a
-digitSum 0 = 0
 digitSum n
-  | n < 0 = digitSum (-n)
-  | otherwise = end + digitSum rest
+  | n < 0  = digitSum (-n)
+digitSum n = go 0 n
   where
-    end = n `mod` 10
-    rest = n `quot` 10
+    go acc 0 = acc
+    go acc n =
+        let end  = n `mod` 10
+            rest = n `quot` 10
+        in  acc `seq` go (acc + end) rest
 
 fibonacci :: Integral a => [a]
 fibonacci = map fst $ iterate (\(a,b) -> (b, b + a)) (0, 1)
