@@ -20,13 +20,12 @@ factorial n = product [2..n]
 digitSum :: Integral a => a -> a
 digitSum n
   | n < 0  = digitSum (-n)
-digitSum n = go 0 n
+digitSum n = fst $ until done step (0, n)
   where
-    go acc 0 = acc
-    go acc n =
-        let end  = n `mod` 10
-            rest = n `quot` 10
-        in  acc `seq` go (acc + end) rest
+    done (_, rest) = rest == 0
+    step (acc, rest) =
+        let (front, end) = rest `divMod` 10
+        in  acc `seq` (acc + end, front)
 
 fibonacci :: Integral a => [a]
 fibonacci = map fst $ iterate (\(a,b) -> (b, b + a)) (0, 1)
