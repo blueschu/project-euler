@@ -1,7 +1,7 @@
 module Euler006 where
 
 sumOfSquares :: Integral a => [a] -> a
-sumOfSquares ns = sum . map (^2) $ ns
+sumOfSquares = sum . map (^2)
 
 squareOfSum :: Integral a => [a] -> a
 squareOfSum ns = (sum ns) ^ 2

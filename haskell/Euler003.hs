@@ -13,7 +13,7 @@ primeFactors n
   where
     searchFactors _ 1 = []
     searchFactors s n
-      | n `mod` s == 0 = s:(searchFactors s (n `quot` s))
+      | n `mod` s == 0 = s : searchFactors s (n `quot` s)
       | otherwise      = searchFactors (s + 1) n
 
 greatestPrimeFactor :: Integral a => a -> a

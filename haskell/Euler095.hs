@@ -2,7 +2,7 @@ module Euler095 where
 
 import Data.List (maximumBy)
 import Data.Ord (comparing)
-import Data.Maybe (catMaybes)
+import Data.Maybe (mapMaybe)
 
 import Euler021 (properDivisorSum)
 
@@ -27,8 +27,7 @@ solution :: Integral a => a -> a
 solution cap = minimum .
     maximumBy (comparing length) .
     filter (noneExceeds cap) .
-    catMaybes .
-    map amicableChain $ [1..cap]
+    mapMaybe amicableChain $ [1..cap]
 
 main :: IO ()
 main = print $ solution elementCap

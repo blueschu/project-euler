@@ -3,7 +3,7 @@ module Euler004 where
 import Common (numericPalindrome)
 
 greatestPalindrome :: Integral a => [a] -> a
-greatestPalindrome = (maximum . filter (numericPalindrome 10))
+greatestPalindrome = maximum . filter (numericPalindrome 10)
 
 productsOfNDigitNumbers :: Integral a => a -> [a]
 productsOfNDigitNumbers digits = [a * b | a <- [bottom..top], b <- [a..top]]
