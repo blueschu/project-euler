@@ -11,4 +11,5 @@ productsOfNDigitNumbers digits = [a * b | a <- [bottom..top], b <- [a..top]]
     bottom = 10 ^ (digits - 1)
     top = 10 ^ digits - 1
 
+main :: IO ()
 main = print $ greatestPalindrome $ productsOfNDigitNumbers 3

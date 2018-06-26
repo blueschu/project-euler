@@ -7,6 +7,7 @@ import Data.Maybe (catMaybes)
 import Euler021 (properDivisorSum)
 
 -- The value that no chain element may exceed
+elementCap :: Int
 elementCap = 999999
 
 amicableChain :: Integral a => a -> Maybe [a]
@@ -29,4 +30,5 @@ solution cap = minimum .
     catMaybes .
     map amicableChain $ [1..cap]
 
+main :: IO ()
 main = print $ solution elementCap

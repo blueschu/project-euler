@@ -1,5 +1,8 @@
 module Euler003 where
 
+import Data.Int (Int64)
+
+target :: Int64
 target = 600851475143
 
 primeFactors :: Integral a => a -> [a]
@@ -16,4 +19,5 @@ primeFactors n
 greatestPrimeFactor :: Integral a => a -> a
 greatestPrimeFactor = maximum . primeFactors
 
+main :: IO ()
 main = print $ greatestPrimeFactor target

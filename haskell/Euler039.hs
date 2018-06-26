@@ -3,6 +3,7 @@ module Euler039 where
 import Data.List (group, maximumBy, sort)
 import Data.Ord (comparing)
 
+target :: Int
 target = 1000
 
 data Triangle = Triangle Int Int Int deriving (Show)
@@ -19,11 +20,13 @@ integralRightTriangles perimeterCap = [t | -- todo: find a more clean way of exp
     let t = Triangle a b (floor  hypot),
     perimeter t <= perimeterCap]
 
+mostFrequentRightTrianglePerimeter :: Int -> (Int, Int)
 mostFrequentRightTrianglePerimeter cap = maximumBy (comparing snd)
     . map (\x -> (head x, length x))
     . group
     . sort
     . map perimeter $ integralRightTriangles cap
 
+main :: IO ()
 main = print $ mostFrequentRightTrianglePerimeter target
 

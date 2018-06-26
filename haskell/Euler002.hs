@@ -2,6 +2,7 @@ module Euler002 where
 
 import Common (fibonacci)
 
+target :: Int
 target = 4000000
 
 evenFibonacci :: Integral a => [a]
@@ -10,6 +11,7 @@ evenFibonacci = filter even fibonacci
 solution :: Integral a => a -> a
 solution cap = sum $ takeWhile (<cap) evenFibonacci
 
+main :: IO ()
 main = print $ solution target
 
 -- Or, as a one-liner

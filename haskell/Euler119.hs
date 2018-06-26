@@ -2,6 +2,7 @@ module Euler119 where
 
 import Common (digitListBase)
 
+target :: Int
 target = 30
 
 isDigitPower :: Integral a => a -> Bool
@@ -17,6 +18,7 @@ isDigitPower n
       where
         digitPowerSum = digitSum ^ power
 
+main :: IO ()
 main = print $ digitPowerSums !! (target - 1) where
     -- Numbers who are equal to their digit sum raised to some power
     digitPowerSums = filter isDigitPower [1..]

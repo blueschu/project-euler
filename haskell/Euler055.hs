@@ -2,8 +2,10 @@ module Euler055 where
 
 import Common (numericPalindrome)
 
+target :: Integer
 target = 10000
 
+checkDepth :: Int
 checkDepth = 50
 
 reverseNum :: Integral a => a -> a
@@ -15,4 +17,5 @@ lychrel depth n = any (numericPalindrome 10) . take depth . drop 1 . iterate (\x
 lychrels :: Integral a => Int -> [a]
 lychrels depth = filter (lychrel depth) [1..]
 
+main :: IO ()
 main = print . length . takeWhile (<target) $ lychrels checkDepth

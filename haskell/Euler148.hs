@@ -3,6 +3,7 @@ module Euler148 where
 import Common (nCr)
 import Data.List (genericLength)
 
+target :: Integer
 target = 10 ^ 9
 
 -- pascalRow' :: Integral a => a -> [a]
@@ -16,7 +17,9 @@ pascalRow n = left ++ right
     right = let trim = fromIntegral (1 - n `mod` 2)
             in drop trim . reverse $ left
 
+solution :: Integral a -> a -> a
 solution n = sum . map (genericLength . filter p . pascalRow) $ [0..n - 1] where
     p x = x `mod` 7 /= 0
 
+main :: IO ()
 main = print $ solution target

@@ -4,8 +4,10 @@ import qualified Data.Set as Set
 
 import Common (digitFactorialSum)
 
+searchCap :: Int
 searchCap = 999999
 
+targetLength :: Int
 targetLength = 60
 
 takeWhileUnique :: (Ord a) => [a] -> [a]
@@ -24,4 +26,5 @@ nonRepeatingFactorialChainLength :: (Integral a) => a -> Int
 nonRepeatingFactorialChainLength = length . takeWhileUnique . digitFactorialChain
 
 -- Produces 402
+main :: IO ()
 main = print . length . filter ((==targetLength) . nonRepeatingFactorialChainLength) $ [1..searchCap]

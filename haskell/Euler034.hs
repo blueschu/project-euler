@@ -12,4 +12,5 @@ isOwnDigitFactorial n = n == (digitFactorialSum n)
 solution :: Integral a => a -> a
 solution cap = sum $ filter isOwnDigitFactorial . takeWhile (<cap) $ [3..]
 
+main :: IO ()
 main = print $ solution target

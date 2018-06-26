@@ -12,5 +12,6 @@ nthPowersEqualToDigitCount n = filter (hasMinDigits n) . takeWhile (hasMaxDigits
 nDigitNumbersThatAreAnNthPower :: Integral a => [[a]]
 nDigitNumbersThatAreAnNthPower = takeWhile (not . null) . map nthPowersEqualToDigitCount $ [1..]
 
+main :: IO ()
 main = print . sum . map length $ nDigitNumbersThatAreAnNthPower
 
