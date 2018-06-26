@@ -1,4 +1,4 @@
-module Eueler053 where
+module Euler053 where
 
 import Common (nCr)
 
