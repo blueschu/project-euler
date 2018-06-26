@@ -17,7 +17,7 @@ pascalRow n = left ++ right
     right = let trim = fromIntegral (1 - n `mod` 2)
             in drop trim . reverse $ left
 
-solution :: Integral a -> a -> a
+solution :: Integral a => a -> a
 solution n = sum . map (genericLength . filter p . pascalRow) $ [0..n - 1] where
     p x = x `mod` 7 /= 0
 

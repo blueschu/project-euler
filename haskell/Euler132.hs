@@ -4,10 +4,10 @@ import Data.List (iterate')
 
 import Euler003 (primeFactors)
 
-target :: Integer
+target :: Int
 target = 10 ^ 9
 
-repunit :: Integral a => Int -> a
+repunit :: Int -> Integer
 repunit k = head . drop k . iterate' ((+1) . (*10)) $ 0
 
 main :: IO ()
