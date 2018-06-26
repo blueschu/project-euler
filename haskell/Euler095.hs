@@ -11,14 +11,13 @@ elementCap :: Int
 elementCap = 999999
 
 amicableChain :: Integral a => a -> Maybe [a]
-amicableChain n = go n [n]
+amicableChain start = go [start]
   where
-    start = n
-    go n acc
-      | next == start = Just acc
+    go acc
+      | next == start   = Just acc
       | next `elem` acc = Nothing
-      | otherwise = go next (next:acc)
-      where next = properDivisorSum n
+      | otherwise       = go (next:acc)
+      where next = properDivisorSum $ head acc
 
 noneExceeds :: Integral a => a -> [a] -> Bool
 noneExceeds n = all (<=n)

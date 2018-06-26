@@ -49,29 +49,30 @@ factorSet = Set.fromList . flattenPairs . factorPairs where
 numericPalindrome :: Integral a => a -> a -> Bool
 numericPalindrome base n
   | n < 0 = numericPalindrome base (-n)
-  | otherwise = let logBaseBase = logBase (fromIntegral base)
-                    greatestPower = floor . logBaseBase . fromIntegral
+  | otherwise = let logBaseBase         = logBase (fromIntegral base)
+                    greatestPower       = floor . logBaseBase . fromIntegral
                     greatestPowerOfBase = base ^ (greatestPower n)
-                in  decayPalindrome base n greatestPowerOfBase
+                in  decayPalindrome n greatestPowerOfBase
   where
-    decayPalindrome base n top
+    decayPalindrome rest top
       | top == 0 = True
-      | otherwise = left == right && decayPalindrome base endsDecayed nextTop
+      | otherwise = left == right && decayPalindrome endsDecayed nextTop
       where
-        left = n `quot` top
-        right = n `mod` base
-        endsDecayed = (n - (left * top) - right) `quot` base
+        left  = rest `quot` top
+        right = rest `mod` base
+        endsDecayed = (rest - (left * top) - right) `quot` base
         nextTop = top `quot` (base ^ 2)
 
 digitListBase :: Integral a => a -> a -> [a]
 digitListBase _ 0 = [0]
 digitListBase base n
-  | n < 0 = error "Not defined for negative numbers"
-  | base < 2 = error "Not defined for bases less than 2"
-  | otherwise = reverse . go base $ n
+  | n < 0     = error "Not defined for negative numbers"
+  | base < 2  = error "Not defined for bases less than 2"
+  | otherwise = reverse $ go n
   where
-    go _ 0 = []
-    go base n = (n `mod` base) : go base (n `quot` base)
+    go 0    = []
+    go rest = let (next, end) = rest `divMod` base
+              in  end : go next
 
 -- Based on formula given at https://www.joachim-breitner.de/blog/600-On_taking_the_last_n_elements_of_a_list
 takeLast :: Int -> [a] -> [a]

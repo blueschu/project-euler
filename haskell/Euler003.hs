@@ -12,9 +12,10 @@ primeFactors n
   | otherwise = searchFactors 2 n
   where
     searchFactors _ 1 = []
-    searchFactors s n
-      | n `mod` s == 0 = s : searchFactors s (n `quot` s)
-      | otherwise      = searchFactors (s + 1) n
+    searchFactors s rest
+      | m == 0     = s : searchFactors s d
+      | otherwise  = searchFactors (s + 1) rest
+      where (d, m) = rest `divMod` s
 
 greatestPrimeFactor :: Integral a => a -> a
 greatestPrimeFactor = maximum . primeFactors
