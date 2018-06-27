@@ -1,3 +1,4 @@
+-- | Common utilities for Project Euler solutions.
 module Common
 ( factorial
 , digitSum
@@ -14,9 +15,11 @@ module Common
 
 import qualified Data.Set as Set
 
+-- | Computes the factorial of an integer.
 factorial :: Integral a => a -> a
 factorial n = product [2..n]
 
+-- | Computes the sum of the decimal digits of an integer.
 digitSum :: Integral a => a -> a
 digitSum n
   | n < 0  = digitSum (-n)
@@ -27,9 +30,11 @@ digitSum n = fst $ until done step (0, n)
         let (front, end) = rest `divMod` 10
         in  acc `seq` (acc + end, front)
 
+-- | The elements of the fibonacci sequences, beginning with 0.
 fibonacci :: Integral a => [a]
 fibonacci = map fst $ iterate (\(a,b) -> (b, b + a)) (0, 1)
 
+-- | Yields an ordered list of the factor pairs of an integer.
 factorPairs :: Integral a => a -> [(a,a)]
 factorPairs n = map partner . filter isFactor $ [1..top]
   where
@@ -37,11 +42,16 @@ factorPairs n = map partner . filter isFactor $ [1..top]
     partner x  = (x, n `div` x)
     isFactor x = n `mod` x == 0
 
+-- | Yields a set of all of the factors of an integer.
 factorSet :: Integral a => a -> Set.Set a
 factorSet = Set.fromList . flattenPairs . factorPairs where
     flattenPairs = foldr (\(a, b) acc -> a : b : acc) []
 
-numericPalindrome :: Integral a => a -> a -> Bool
+-- | True if the given integer is palindromic when represented in the given base.
+numericPalindrome :: Integral a 
+                  => a    -- ^ The base to use. 
+                  -> a    -- ^ The integer to be checked.
+                  -> Bool -- ^ Whether or not the integer is palindromic with respect to the given base.
 numericPalindrome base n
   | n < 0 = numericPalindrome base (-n)
   | otherwise = let logBaseBase         = logBase (fromIntegral base)
@@ -58,7 +68,11 @@ numericPalindrome base n
         endsDecayed = (rest - (left * top) - right) `quot` base
         nextTop = top `quot` (base ^ 2)
 
-digitListBase :: Integral a => a -> a -> [a]
+-- | Yields a list of the digits in the representation of an integer in the given base.
+digitListBase :: Integral a 
+              => a   -- ^ The base to use.
+              -> a   -- ^ The value whose digits are to be produced.
+              -> [a] -- ^ List of the digits used to represent the value in the given base.
 digitListBase _ 0 = [0]
 digitListBase base n
   | n < 0     = error "Not defined for negative numbers"
@@ -69,13 +83,16 @@ digitListBase base n
     go rest = let (next, end) = rest `divMod` base
               in  end : go next
 
--- Based on formula given at https://www.joachim-breitner.de/blog/600-On_taking_the_last_n_elements_of_a_list
+-- | Takes the last n elements of a list.
+-- Based on formula given at <https://www.joachim-breitner.de/blog/600-On_taking_the_last_n_elements_of_a_list>.
 takeLast :: Int -> [a] -> [a]
 takeLast n l = go (drop n l) l
   where
     go [] r = r
     go (_:xs) (_:ys) = go xs ys
 
+-- | Computes the sum of the factorials of the decimal digits of an integer.
+--
 -- Factorial function replaced with local patterning matching to reduce computation time.
 digitFactorialSum :: Integral a => a -> a
 digitFactorialSum = sum . map digitFactorial . digitListBase 10
@@ -92,9 +109,11 @@ digitFactorialSum = sum . map digitFactorial . digitListBase 10
     digitFactorial 8 = 40320
     digitFactorial 9 = 362880
 
+-- | The number of permutaitons of n objects taken r at a time.
 nPr :: Integral a => a -> a -> a
 n `nPr` r = (factorial n) `quot` (factorial (n - r))
 
+-- | The number of combinations of n objects taken r at a time.
 nCr :: Integral a => a -> a -> a
 n `nCr` r
   | n == r = 1
