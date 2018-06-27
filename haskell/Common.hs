@@ -13,7 +13,9 @@ module Common
 , nCr
 ) where
 
+import Data.List (unfoldr)
 import qualified Data.Set as Set
+import Data.Tuple (swap)
 
 -- | Computes the factorial of an integer.
 factorial :: Integral a => a -> a
@@ -77,11 +79,10 @@ digitListBase _ 0 = [0]
 digitListBase base n
   | n < 0     = error "Not defined for negative numbers"
   | base < 2  = error "Not defined for bases less than 2"
-  | otherwise = reverse $ go n
+  | otherwise = reverse $ unfoldr step n
   where
-    go 0    = []
-    go rest = let (next, end) = rest `divMod` base
-              in  end : go next
+    step 0 = Nothing
+    step r = Just . swap $ r `divMod` base
 
 -- | Takes the last n elements of a list.
 -- Based on formula given at <https://www.joachim-breitner.de/blog/600-On_taking_the_last_n_elements_of_a_list>.
