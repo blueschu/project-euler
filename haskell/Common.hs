@@ -50,25 +50,16 @@ factorSet = Set.fromList . flattenPairs . factorPairs where
     flattenPairs = foldr (\(a, b) acc -> a : b : acc) []
 
 -- | True if the given integer is palindromic when represented in the given base.
+--
+-- This functions is implemented as a simple comparison for equality against the
+-- reverse of the integer's digit list. This method was deemed simple than the
+-- previous implementation.
 numericPalindrome :: Integral a 
                   => a    -- ^ The base to use. 
                   -> a    -- ^ The integer to be checked.
                   -> Bool -- ^ Whether or not the integer is palindromic with respect to the given base.
-numericPalindrome base n
-  | n < 0 = numericPalindrome base (-n)
-  | otherwise = let logBaseBase         = logBase (fromIntegral base)
-                    greatestPower       = floor . logBaseBase . fromIntegral
-                    greatestPowerOfBase = base ^ (greatestPower n)
-                in  decayPalindrome n greatestPowerOfBase
-  where
-    decayPalindrome rest top
-      | top == 0 = True
-      | otherwise = left == right && decayPalindrome endsDecayed nextTop
-      where
-        left  = rest `quot` top
-        right = rest `mod` base
-        endsDecayed = (rest - (left * top) - right) `quot` base
-        nextTop = top `quot` (base ^ 2)
+numericPalindrome b =  palindrome . digitListBase b where
+    palindrome l = l == reverse l
 
 -- | Yields a list of the digits in the representation of an integer in the given base.
 digitListBase :: Integral a 
