@@ -10,6 +10,8 @@ module Common
 , takeLast
 , nPr
 , nCr
+, isPrime
+, primes
 ) where
 
 import Data.List (unfoldr)
@@ -92,3 +94,20 @@ n `nCr` r
   | n == r = 1
   | n < r  = 0
   | otherwise = (n `nPr` r) `quot` (factorial r)
+
+-- | Checks whether the given integer is prime.
+--
+-- This functions uses trival by division against every prime number below the
+-- sqaure root of the given integer. It may be impractical for integers with
+-- large prime factors.
+isPrime :: Int -> Bool
+isPrime p = let top     = floor . sqrt . fromIntegral $ p
+                check n = p `mod` n /= 0
+            in  p == 2 || check 2 && (all check . takeWhile (<=top) $ primes)
+
+-- | Infite list of every prime number.
+--
+-- This list is produced by checking every odd integer for divisibility with
+-- known primes below their square root.
+primes :: [Int]
+primes = 2 : filter isPrime [3,5..]
