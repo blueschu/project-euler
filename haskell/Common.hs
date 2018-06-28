@@ -8,7 +8,6 @@ module Common
 , numericPalindrome
 , digitListBase
 , takeLast
-, digitFactorialSum
 , nPr
 , nCr
 ) where
@@ -82,24 +81,6 @@ takeLast n l = go (drop n l) l
   where
     go [] r = r
     go (_:xs) (_:ys) = go xs ys
-
--- | Computes the sum of the factorials of the decimal digits of an integer.
---
--- Factorial function replaced with local patterning matching to reduce computation time.
-digitFactorialSum :: Integral a => a -> a
-digitFactorialSum = sum . map digitFactorial . digitListBase 10
-  where
-    digitFactorial :: Integral a => a -> a
-    digitFactorial 0 = 1
-    digitFactorial 1 = 1
-    digitFactorial 2 = 2
-    digitFactorial 3 = 6
-    digitFactorial 4 = 24
-    digitFactorial 5 = 120
-    digitFactorial 6 = 720
-    digitFactorial 7 = 5040
-    digitFactorial 8 = 40320
-    digitFactorial 9 = 362880
 
 -- | The number of permutaitons of n objects taken r at a time.
 nPr :: Integral a => a -> a -> a

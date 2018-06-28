@@ -2,7 +2,7 @@ module Euler074 where
 
 import qualified Data.Set as Set
 
-import Common (digitFactorialSum)
+import Euler034 (digitFactorialSum)
 
 searchCap :: Int
 searchCap = 999999
