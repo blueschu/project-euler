@@ -103,7 +103,7 @@ n `nCr` r
 isPrime :: Int -> Bool
 isPrime p = let top     = floor . sqrt . fromIntegral $ p
                 check n = p `mod` n /= 0
-            in  p == 2 || check 2 && (all check . takeWhile (<=top) $ primes)
+            in  all check . takeWhile (<=top) $ primes
 
 -- | Infite list of every prime number.
 --
