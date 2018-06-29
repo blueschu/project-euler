@@ -101,7 +101,7 @@ n `nCr` r
 -- sqaure root of the given integer. It may be impractical for integers with
 -- large prime factors.
 isPrime :: Int -> Bool
-isPrime p = let top     = floor . sqrt . fromIntegral $ p
+isPrime p = let top     = floor . sqrt . fromIntegral . abs $ p
                 check n = p `mod` n /= 0
             in  all check . takeWhile (<=top) $ primes
 
