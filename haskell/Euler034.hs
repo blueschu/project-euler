@@ -19,7 +19,7 @@ isOwnDigitFactorial :: Integral a => a -> Bool
 isOwnDigitFactorial n = n == digitFactorialSum n
 
 solution :: Integral a => a -> a
-solution cap =  sum . filter isOwnDigitFactorial $ [0..cap]
+solution cap =  sum . filter isOwnDigitFactorial $ [3..cap]
 
 main :: IO ()
 main = print $ solution target
