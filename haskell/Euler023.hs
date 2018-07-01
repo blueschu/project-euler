@@ -1,4 +1,4 @@
-module Eueler023 where
+module Euler023 where
 
 import qualified Data.Set as Set
 
