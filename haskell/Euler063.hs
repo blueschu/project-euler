@@ -7,7 +7,7 @@ nthPowersEqualToDigitCount :: Integral a => a -> [a]
 nthPowersEqualToDigitCount n = filter (hasMinDigits n) . takeWhile (hasMaxDigits n) . nthPowers $ n
   where
     hasMaxDigits count x = x < 10 ^ count
-    hasMinDigits count x = x > 10 ^ (count - 1)
+    hasMinDigits count x = x >= 10 ^ (count - 1)
 
 nDigitNumbersThatAreAnNthPower :: Integral a => [[a]]
 nDigitNumbersThatAreAnNthPower = takeWhile (not . null) . map nthPowersEqualToDigitCount $ [1..]
