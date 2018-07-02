@@ -3,6 +3,8 @@ module Euler039 where
 import Data.List (group, maximumBy, sort)
 import Data.Ord (comparing)
 
+import Common (isInteger)
+
 target :: Int
 target = 1000
 
@@ -16,7 +18,7 @@ integralRightTriangles perimeterCap = [t | -- todo: find a more clean way of exp
     a <- [3..perimeterCap `quot` 2],
     b <- [a..perimeterCap `quot`  2],
     let hypot = sqrt . fromIntegral $ a ^ 2 + b ^ 2,
-    hypot == fromInteger (round hypot),
+    isInteger 15 hypot,
     let t = Triangle a b (floor  hypot),
     perimeter t <= perimeterCap]
 

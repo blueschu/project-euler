@@ -12,6 +12,7 @@ module Common
 , nCr
 , isPrime
 , primes
+, isInteger
 ) where
 
 import Data.List (unfoldr)
@@ -111,3 +112,14 @@ isPrime p = let top     = floor . sqrt . fromIntegral . abs $ p
 -- known primes below their square root.
 primes :: [Int]
 primes = 2 : filter isPrime [3,5..]
+
+-- | Checks if the given number is an integer when rounded to the
+-- given number of decimal places.
+isInteger :: (Integral a, RealFrac b)
+          => a -- ^ The number of decimal places to round to.
+          -> b -- ^ The number to check.
+          -> Bool -- ^ Whether the given number is an integer when rounded.
+isInteger places x =
+    let offset   = 10 ^ places
+        relevant = round $ x * (fromIntegral offset)
+    in  relevant `mod` offset == 0
