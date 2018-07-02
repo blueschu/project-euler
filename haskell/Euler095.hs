@@ -6,27 +6,33 @@ import Data.Maybe (mapMaybe)
 
 import Euler021 (properDivisorSum)
 
--- The value that no chain element may exceed
+-- | The value that no chain element may exceed.
 elementCap :: Int
 elementCap = 999999
 
-amicableChain :: Integral a => a -> Maybe [a]
-amicableChain start = go [start]
+-- | Produces the amicable chain that begins with the given value, if
+-- one exists.
+--
+-- If a possible amicable chain would contain a value greater than
+-- "cap", it will be ignored.
+amicableChain :: Integral a
+              => a -- ^ The value that no chain element may exceed.
+              -> a -- ^ The initial value for the chain.
+              -> Maybe [a] -- ^ The amicable chain that begins with the given seed
+amicableChain cap start = go [start]
   where
     go acc
-      | next == start   = Just acc
-      | next `elem` acc = Nothing
-      | otherwise       = go (next:acc)
+      | next == start                  = Just acc
+      | next `elem` acc || next > cap  = Nothing
+      | otherwise                      = go (next:acc)
       where next = properDivisorSum $ head acc
 
-noneExceeds :: Integral a => a -> [a] -> Bool
-noneExceeds n = all (<=n)
-
+-- Finds the smallest memebrs of the longest amicable chain with no
+-- element exceeding the given cap.
 solution :: Integral a => a -> a
 solution cap = minimum .
     maximumBy (comparing length) .
-    filter (noneExceeds cap) .
-    mapMaybe amicableChain $ [1..cap]
+    mapMaybe (amicableChain cap) $ [1..cap]
 
 main :: IO ()
 main = print $ solution elementCap
