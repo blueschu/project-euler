@@ -52,9 +52,6 @@ def solution(digits: str, n: int) -> int:
     """
     Returns the greatest product of n adjacent digits in the given
     digits string.
-
-    >>> solution(INPUT, 4)
-    5832
     """
     return max(digit_window_products(digits, n))
 
