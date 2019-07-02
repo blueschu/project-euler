@@ -20,14 +20,10 @@ func MultiplesSeq(multiples ...int) func() int {
 
 func main() {
 	seq := MultiplesSeq(3, 5)
-	sum, i := 0, 0
+	sum := 0
 
-    for {
-        i = seq()
-        if i >= CAP {
-            break
-        }
-        sum += i
-    }
+	for i := seq(); i < CAP; i = seq() {
+		sum += i
+	}
 	fmt.Println(sum)
 }
